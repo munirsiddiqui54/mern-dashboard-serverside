@@ -8,7 +8,11 @@ const Jwt= require('jsonwebtoken');
 const jwtkey='secret'
 
 const app=express();
-app.use(cors());
+app.use(cors( {
+        origin:["https://mern-dashboard-serverside.vercel.app"],
+        method: ["GET","POST"],
+        credentials:true
+    }));
 app.use(express.json())
 
 app.post("/register",async (req,resp)=>{
