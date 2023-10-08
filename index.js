@@ -25,6 +25,10 @@ app.post("/register",async (req,resp)=>{
     }
 })
 
+app.get("/hello",(req,resp)=>{
+resp.send("Deployed....")
+})
+
 app.post("/login",async (req,resp)=>{
     if(req.body.email&&req.body.password){
         let user=await User.findOne(req.body).select("-password");
