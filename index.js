@@ -16,17 +16,18 @@ app.use(cors( {
 app.use(express.json())
 
 app.post("/register",async (req,resp)=>{
-    let u=new User(req.body);
-    let result=await u.save();
-    result=result.toObject();
-    delete result.password;
-    if(result){
-        Jwt.sign({result},jwtkey,{expiresIn:"2h"},(err,token)=>{
-            resp.send({result,auth:token});
-        })
-    }else{
-        resp.send({result:"Not Found"})
-    }
+   resp.send("registered")
+    // let u=new User(req.body);
+    // let result=await u.save();
+    // result=result.toObject();
+    // delete result.password;
+    // if(result){
+    //     Jwt.sign({result},jwtkey,{expiresIn:"2h"},(err,token)=>{
+    //         resp.send({result,auth:token});
+    //     })
+    // }else{
+    //     resp.send({result:"Not Found"})
+    // }
 })
 
 app.get("/hello",(req,resp)=>{
